@@ -1,4 +1,6 @@
 defmodule MissionControl do
+  import MissionControl.Stage
+
   @moduledoc """
   Documentation for `MissionControl`.
   """
