@@ -1,5 +1,6 @@
 defmodule MissionControl do
   import MissionControl.Stage
+  import MissionControl.Validation
 
   @moduledoc """
   Documentation for `MissionControl`.
@@ -79,7 +80,8 @@ defmodule MissionControl do
   """
   @spec calculate(integer, list(tuple)) :: integer | String.t()
   def calculate(mass, stages) do
-    consumption(mass)
+    check(mass, stages)
+    |> consumption(mass)
   end
 
   @doc """
@@ -94,7 +96,8 @@ defmodule MissionControl do
   """
   @spec calculate(integer(), atom(), float()) :: integer | String.t()
   def calculate(mass, stage, gravity) do
-    consumption(mass)
+    check(mass, [{stage, gravity}])
+    |> consumption(mass)
   end
 
   @spec consumption(tuple(), integer()) :: integer | String.t()
