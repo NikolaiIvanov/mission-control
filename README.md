@@ -1,21 +1,30 @@
 # MissionControl
 
-**TODO: Add description**
+App which will help to calculate fuel required for the flight. The goal of this application is to calculate fuel to launch from one planet of the Solar system, and to land on another planet of the Solar system, depending on the flight route.
+
+#
+
 
 ## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `mission_control` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:mission_control, "~> 0.1.0"}
-  ]
-end
+```bash
+git clone https://github.com/NikolaiIvanov/mission-control.git && cd mission-control
+mix deps.get
+mix compile
+iex -S mix
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/mission_control](https://hexdocs.pm/mission_control).
+## Usage Help
+```bash
+$ iex -S mix
+iex> MissionControll.help
+```
 
+## Tests
+```bash
+$ mix test
+```
+
+## Code Quality Report
+```bash
+$ mix credo
+```
