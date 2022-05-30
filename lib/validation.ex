@@ -8,8 +8,7 @@ defmodule MissionControl.Validation do
 
   @doc """
     check/2
-
-    Check the Mission Stage is valid?
+    Check the Mission Stage inputs
 
     ## Examples
     iex> MissionControl.Validation.check(28801, "fake")

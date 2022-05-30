@@ -95,23 +95,18 @@ defmodule MissionControl do
     13447
   """
   @spec calculate(integer(), atom(), float()) :: integer | String.t()
-  def calculate(mass, stage, gravity) do
-    check(mass, [{stage, gravity}])
+  def calculate(mass, stage, planet) do
+    check(mass, [{stage, planet}])
     |> consumption(mass)
   end
 
   @spec consumption(tuple(), integer()) :: integer | String.t()
-  defp consumption({:error, message}, _mass),
-    do:
-      message <>
-        " Get help: MissionControl.help()"
-
+  defp consumption({:error, message}, _mass), do: message <> " Get help: MissionControl.help()"
   defp consumption({:ok, []}, _mass), do: 0
-
   defp consumption({:ok, stages}, mass) do
     [current_stage | next_stage] = stages
-                  {stage, value} = current_stage
-                         gravity = get_gravity(value)
+                 {stage, planet} = current_stage
+                         gravity = get_gravity(planet)
 
     equipment_weight = consumption({:ok, next_stage}, mass)
     equipment_weight + extra_fuel(stage, mass + equipment_weight, gravity)
