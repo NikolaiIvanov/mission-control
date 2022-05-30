@@ -24,6 +24,11 @@ iex> MissionControll.help
 $ mix test
 ```
 
+## Tests Cover 100%
+```bash
+$ mix test --cover
+```
+
 ## Code Quality Report
 ```bash
 $ mix credo

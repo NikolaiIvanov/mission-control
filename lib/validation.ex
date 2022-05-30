@@ -24,10 +24,12 @@ defmodule MissionControl.Validation do
   @spec check(integer, list(tuple)) :: tuple
   def check(mass, _stages) when not is_integer(mass), do: {:error, "Ship weight must be an integer."}
   def check(mass, _stages) when is_integer(mass) and mass < 0, do: {:error, "Ship weight must be greather then 0."}
-  def check(_mass, stages) when not is_list(stages), do: {:error, "Invalid Mission Stages."}
+  def check(_mass, stages) when not is_list(stages) or stages == [], do: {:error, "Invalid Mission Stages."}
+  def check(_mass, stages) when map_size(stages) == 0, do: {:error, "Invalid Mission Stages."}
+  def check(_mass, stages) when tuple_size(stages) == 0, do: {:error, "Invalid Mission Stages."}
+  def check(_mass, [stages]) when is_tuple(stages) and tuple_size(stages) <= 0, do: {:error, "Invalid Mission Stages."}
   def check(_mass, stages) when is_list(stages) do
     if  Enum.all?(stages, fn stage ->
-          is_tuple(stage) &&
           validate_stages(stage) &&
           validate_gravity(stage)
         end),
@@ -44,7 +46,7 @@ defmodule MissionControl.Validation do
     end
   end
 
-  defp validate_stages({stage, _gravity}), do: Enum.member?(@stages, stage)
+  defp validate_stages({stage, _gravity}) when is_atom(stage), do: Enum.member?(@stages, stage)
   defp validate_gravity({_stage, gravity}), do: is_float(gravity) || Enum.member?(@planets, gravity)
   defp validate_stage(stage) when is_atom(stage), do: Enum.member?(@stages, stage)
 end

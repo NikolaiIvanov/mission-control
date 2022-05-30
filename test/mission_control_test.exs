@@ -9,6 +9,12 @@ defmodule MissionControlTest do
     assert Map.keys(MissionControl.help) == help_chapters
   end
 
+  test "should fail with invalid planet gravity for single Mission Stage" do
+    {status, _message} = MissionControl.calculate(28_801, :land, 9)
+
+    assert status == :error
+  end
+
   test "should return calculated result for single Mission Stage" do
     # arguments: 28801, :launch, 9.807
     expected_result = 13_447
