@@ -26,7 +26,19 @@ defmodule MissionControl.ValidationTest do
     assert response == MissionControl.Validation.check(-1, [{:land, :earth}])
   end
 
-  test "should fail with invalid Mission Stage" do
+  test "should fail with empty list Mission Stage" do
+    response = {:error, "Invalid Mission Stages."}
+
+    assert response == MissionControl.Validation.check(28_801, [])
+  end
+
+  test "should fail with empty tuple Mission Stage" do
+    response = {:error, "Invalid Mission Stages."}
+
+    assert response == MissionControl.Validation.check(28_801, [{}])
+  end
+
+  test "should fail with invalid Single Mission Stage" do
     response = {:error, "Invalid Mission Stage."}
 
     assert response == MissionControl.Validation.check_single(:laun)

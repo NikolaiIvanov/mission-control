@@ -101,7 +101,7 @@ defmodule MissionControl do
   end
 
   @spec consumption(tuple(), integer()) :: integer | String.t()
-  defp consumption({:error, message}, _mass), do: message <> " Get help: MissionControl.help()"
+  defp consumption({:error, message}, _mass), do: {:error, message <> " Get help: MissionControl.help()"}
   defp consumption({:ok, []}, _mass), do: 0
   defp consumption({:ok, stages}, mass) do
     [current_stage | next_stage] = stages
