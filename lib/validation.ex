@@ -8,8 +8,7 @@ defmodule MissionControl.Validation do
 
   @doc """
     check/2
-
-    Check the Mission Stage is valid?
+    Check the Mission Stage inputs
 
     ## Examples
     iex> MissionControl.Validation.check(28801, "fake")
@@ -25,20 +24,15 @@ defmodule MissionControl.Validation do
   @spec check(integer, list(tuple)) :: tuple
   def check(mass, _stages) when not is_integer(mass), do: {:error, "Ship weight must be an integer."}
   def check(mass, _stages) when is_integer(mass) and mass < 0, do: {:error, "Ship weight must be greather then 0."}
-  def check(_mass, stages) do
-    case stages do
-      stages when is_list(stages) ->
-        if  Enum.all?(stages, fn stage ->
-              is_tuple(stage) &&
-              validate_stages(stage) &&
-              validate_gravity(stage)
-            end),
-           do: {:ok, stages},
-           else: {:error, "Invalid Mission Stages."}
-
-      _stages ->
-        {:error, "Invalid Mission Stages."}
-    end
+  def check(_mass, stages) when not is_list(stages), do: {:error, "Invalid Mission Stages."}
+  def check(_mass, stages) when is_list(stages) do
+    if  Enum.all?(stages, fn stage ->
+          is_tuple(stage) &&
+          validate_stages(stage) &&
+          validate_gravity(stage)
+        end),
+    do: {:ok, stages},
+    else: {:error, "Invalid Mission Stages."}
   end
 
   @spec check_single(atom) :: {:error, <<_::184>>} | {:ok, atom}

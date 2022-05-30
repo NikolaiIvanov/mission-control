@@ -7,7 +7,6 @@ defmodule MissionControl.Stage do
 
   @doc """
     calc/3
-
     Calculate basic fuel requirements for Mission Stages: Launch and Land
     launch: mass * gravity * 0.042 - 33
     land: mass * gravity * 0.033 - 42
@@ -17,11 +16,14 @@ defmodule MissionControl.Stage do
     9278
   """
   @spec calc(atom(), number(), number()) :: integer
-  def calc(stage, mass, gravity) do
-      stage_type = set_stage_type(stage)
-      planet_gravity = get_gravity(gravity)
-      fuel = mass * planet_gravity * stage_type.coefficient - stage_type.constant
+  def calc(:launch, mass, planet) do
+      fuel = mass * get_gravity(planet) * 0.042 - 33
       floor(fuel) |> trunc()
+  end
+
+  def calc(:land, mass, planet) do
+    fuel = mass * get_gravity(planet) * 0.033 - 42
+    floor(fuel) |> trunc()
   end
 
   @doc """
@@ -32,19 +34,18 @@ defmodule MissionControl.Stage do
     iex> MissionControl.Stage.extra_fuel(:land, 28801, 9.807)
   """
   @spec extra_fuel(atom(), number(), float()) :: integer
-  def extra_fuel(stage, mass, gravity) do
-    planet_gravity = get_gravity(gravity)
-    fuel_required = calc(stage, mass, planet_gravity)
-
+  def extra_fuel(stage, mass, planet) when stage == :land or stage == :launch do
+    gravity = get_gravity(planet)
+    fuel_required = calc(stage, mass, gravity)
 
     if fuel_required <= 0,
       do: 0,
-      else: fuel_required + extra_fuel(stage, fuel_required, planet_gravity)
+      else: fuel_required + extra_fuel(stage, fuel_required, gravity)
   end
 
   @doc """
       get_gravity/1
-      Get gravity value via keyword.
+      Get Planet gravity value.
 
       ## Examples
       iex> MissionControl.Stage.get_gravity(:earth)
@@ -54,14 +55,10 @@ defmodule MissionControl.Stage do
       9.807
   """
   @spec get_gravity(any) :: any
-  def get_gravity(key) do
+  def get_gravity(key) when is_float(key) or is_map_key(@planets, key) do
     case @planets[key] do
       nil -> key
       gravity -> gravity
     end
   end
-
-  defp set_stage_type(:launch), do: %{coefficient: 0.042, constant: 33}
-  defp set_stage_type(:land),   do: %{coefficient: 0.033, constant: 42}
-  defp set_stage_type(_),       do: %{coefficient: 0, constant: 0}
 end
