@@ -24,7 +24,7 @@ iex> MissionControll.help
 $ mix test
 ```
 
-## Tests Cover 100%
+## Tests Cover
 ```bash
 $ mix test --cover
 ```
