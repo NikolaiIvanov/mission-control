@@ -1,5 +1,5 @@
 defmodule MissionControl.ValidationTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   doctest MissionControl.Validation
 
   test "should fail with invalid Mission Stages and return error status" do

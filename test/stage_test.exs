@@ -1,5 +1,5 @@
 defmodule MissionControl.StageTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   doctest MissionControl.Stage
 
   test "should return calculated result for the Apollo 11 Land Mission Stage" do
