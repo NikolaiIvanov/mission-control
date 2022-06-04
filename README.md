@@ -34,7 +34,7 @@ $ mix test --cover
 $ mix credo
 ```
 
-## **[ExDoc](doc/index.html)**
+## **[ExDoc](https://htmlpreview.github.io/?https://github.com/NikolaiIvanov/mission-control/blob/master/doc/MissionControl.html)**
 ```bash
 $ mix docs
 ```
