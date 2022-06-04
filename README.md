@@ -33,3 +33,8 @@ $ mix test --cover
 ```bash
 $ mix credo
 ```
+
+## **[ExDoc](doc/index.html)**
+```bash
+$ mix docs
+```
