@@ -33,3 +33,8 @@ $ mix test --cover
 ```bash
 $ mix credo
 ```
+
+## **[ExDoc](https://htmlpreview.github.io/?https://github.com/NikolaiIvanov/mission-control/blob/master/doc/MissionControl.html)**
+```bash
+$ mix docs
+```

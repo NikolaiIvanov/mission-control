@@ -1,5 +1,5 @@
 defmodule MissionControlTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   doctest MissionControl
 
   test "should return help chapters" do

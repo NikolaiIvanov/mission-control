@@ -6,16 +6,27 @@ defmodule MissionControl.Stage do
   """
 
   @doc """
-    calc/3
-    Calculate basic fuel requirements for Mission Stages: Launch and Land
-    launch: mass * gravity * 0.042 - 33
-    land: mass * gravity * 0.033 - 42
+  calc/3
+  Calculate basic fuel requirements for Mission Stages: Launch and Land
 
-    ## Examples
-    iex> MissionControl.Stage.calc(:land, 28801, 9.807)
-    9278
+  Formula
+  launch: mass * gravity * 0.042 - 33
+  land: mass * gravity * 0.033 - 42
+
+  ## Examples
+
+      iex> MissionControl.Stage.calc(:land, 28801, 1.62)
+      1497
+
+      iex> MissionControl.Stage.calc(:land, 28801, :moon)
+      1497
+
   """
-  @spec calc(atom(), number(), number()) :: integer
+  @spec calc(
+    atom(),
+    non_neg_integer(),
+    non_neg_integer() | atom()
+  ) :: Integer.t()
   def calc(:launch, mass, planet) do
       fuel = mass * get_gravity(planet) * 0.042 - 33
       floor(fuel) |> trunc()
@@ -27,13 +38,23 @@ defmodule MissionControl.Stage do
   end
 
   @doc """
-    extra_fuel/3
-    Calculate fuel requirements for a round trip, including extra fuel for itself.
+  extra_fuel/3
+  Calculate fuel requirements for a Mission round trip, including extra fuel for itself
 
-    ## Examples
-    iex> MissionControl.Stage.extra_fuel(:land, 28801, 9.807)
+  ## Examples
+
+      iex> MissionControl.Stage.extra_fuel(:land, 28801, 9.807)
+      13447
+
+      iex> MissionControl.Stage.extra_fuel(:land, 28801, :earth)
+      13447
+
   """
-  @spec extra_fuel(atom(), number(), float()) :: integer
+  @spec extra_fuel(
+    atom(),
+    non_neg_integer(),
+    float() | atom()
+  ) :: Integer.t()
   def extra_fuel(stage, mass, planet) when stage == :land or stage == :launch do
     gravity = get_gravity(planet)
     fuel_required = calc(stage, mass, gravity)
@@ -44,17 +65,21 @@ defmodule MissionControl.Stage do
   end
 
   @doc """
-      get_gravity/1
-      Get Planet gravity value.
+  get_gravity/1
+  Get Planet gravity value
 
-      ## Examples
-      iex> MissionControl.Stage.get_gravity(:earth)
-      9.807
+  ## Examples
 
-      iex> MissionControl.Stage.get_gravity(9.807)
-      9.807
+    iex> MissionControl.Stage.get_gravity(:earth)
+    9.807
+
+    iex> MissionControl.Stage.get_gravity(9.807)
+    9.807
+
   """
-  @spec get_gravity(any) :: any
+  @spec get_gravity(
+    atom() | float()
+  ) :: Atom.t() | Float.t()
   def get_gravity(key) when is_float(key) or is_map_key(@planets, key) do
     case @planets[key] do
       nil -> key

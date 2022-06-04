@@ -7,21 +7,25 @@ defmodule MissionControl.Validation do
   """
 
   @doc """
-    check/2
-    Check the Mission Stage inputs
+  check/2
+  Check the Mission Stage inputs is valid?
 
-    ## Examples
-    iex> MissionControl.Validation.check(28801, "fake")
-    {:error, "Invalid Mission Stages."}
+  ## Examples
 
-    iex> MissionControl.Validation.check(1.23, [{:land, :earth}])
-    {:error, "Ship weight must be an integer."}
+      iex> MissionControl.Validation.check(28801, "fake")
+      {:error, "Invalid Mission Stages."}
 
-    iex> MissionControl.Validation.check(28801, [{:land, :earth}])
-    {:ok, [{:land, :earth}]}
+      iex> MissionControl.Validation.check(1.23, [{:land, :earth}])
+      {:error, "Ship weight must be an integer."}
+
+      iex> MissionControl.Validation.check(28801, [{:land, :earth}])
+      {:ok, [{:land, :earth}]}
+
   """
-
-  @spec check(integer, list(tuple)) :: tuple
+  @spec check(
+    integer,
+    list(tuple)
+  ) :: tuple()
   def check(mass, _stages) when not is_integer(mass), do: {:error, "Ship weight must be an integer."}
   def check(mass, _stages) when is_integer(mass) and mass < 0, do: {:error, "Ship weight must be greather then 0."}
   def check(_mass, stages) when not is_list(stages) or stages == [], do: {:error, "Invalid Mission Stages."}
@@ -37,7 +41,9 @@ defmodule MissionControl.Validation do
     else: {:error, "Invalid Mission Stages."}
   end
 
-  @spec check_single(atom) :: {:error, <<_::184>>} | {:ok, atom}
+  @spec check_single(
+    atom()
+  ) :: {:error, <<_::184>>} | {:ok, atom()}
   def check_single(stage) do
     if validate_stage(stage) do
       {:ok, stage}
