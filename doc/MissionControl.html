@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.28.4">
+    <meta name="project" content="MissionControl v1.0.0">
+
+    <title>MissionControl — MissionControl v1.0.0</title>
+    <link rel="stylesheet" href="dist/elixir-b6f1ed5df9b1d42a7309.css" />
+
+    <script src="dist/sidebar_items-a3c5f66296.js"></script>
+
+      <script src="docs_config.js"></script>
+
+    <script async src="dist/app-bd1cb213813bf4825aa2.js"></script>
+
+
+  </head>
+  <body data-type="modules">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+
+<section class="sidebar">
+  <button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+    <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+  </button>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+    <div class="sidebar-projectDetails">
+      <a href="https://github.com/NikolaiIvanov/mission-control" class="sidebar-projectName" translate="no">
+MissionControl
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
+        v1.0.0
+      </strong>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+        <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://github.com/NikolaiIvanov/mission-control/blob/main/lib/mission_control.ex#L1" title="View Source" class="view-source" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span translate="no">MissionControl</span> 
+  <small class="app-vsn" translate="no">(MissionControl v1.0.0)</small>
+
+</h1>
+
+
+  <section id="moduledoc">
+<p>Documentation for <a href="MissionControl.html#content"><code class="inline">MissionControl</code></a>.
+MissionControl calculate fuel required for the flight: launch from one planet
+of the Solar system, and to land on another planet of the Solar system,
+depending on the flight route.</p>
+  </section>
+
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+      Summary
+    </h1>
+
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+
+      <div class="summary-row">
+        <div class="summary-signature">
+          <a href="#calculate/2" translate="no">calculate(mass, stages)</a>
+
+        </div>
+
+          <div class="summary-synopsis"><p>MissionControl.calculate/2</p></div>
+
+      </div>
+
+      <div class="summary-row">
+        <div class="summary-signature">
+          <a href="#calculate/3" translate="no">calculate(mass, stage, planet)</a>
+
+        </div>
+
+          <div class="summary-synopsis"><p>MissionControl.calculate/3</p></div>
+
+      </div>
+
+      <div class="summary-row">
+        <div class="summary-signature">
+          <a href="#help/0" translate="no">help()</a>
+
+        </div>
+
+          <div class="summary-synopsis"><p>MissionControl.help()</p></div>
+
+      </div>
+
+  </div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+Functions
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="calculate/2">
+
+  <div class="detail-header">
+    <a href="#calculate/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">calculate(mass, stages)</h1>
+
+      <a href="https://github.com/NikolaiIvanov/mission-control/blob/main/lib/mission_control.ex#L97" class="view-source" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> calculate(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">tuple</a>()]) :: Integer.t() | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+<p>MissionControl.calculate/2</p><p>Calculate fuel required for whole Mission: Launch and Land on each Planet in list</p><h2 id="calculate/2-examples" class="section-heading">
+  <a href="#calculate/2-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">examples</p>
+  </a>
+  Examples
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">MissionControl</span><span class="o">.</span><span class="n">calculate</span><span class="p" data-group-id="2942220925-1">(</span><span class="mi">28801</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2942220925-2">[</span><span class="p" data-group-id="2942220925-3">{</span><span class="ss">:launch</span><span class="p">,</span><span class="w"> </span><span class="mf">9.807</span><span class="p" data-group-id="2942220925-3">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2942220925-4">{</span><span class="ss">:land</span><span class="p">,</span><span class="w"> </span><span class="mf">1.62</span><span class="p" data-group-id="2942220925-4">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2942220925-5">{</span><span class="ss">:launch</span><span class="p">,</span><span class="w"> </span><span class="mf">1.62</span><span class="p" data-group-id="2942220925-5">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2942220925-6">{</span><span class="ss">:land</span><span class="p">,</span><span class="w"> </span><span class="mf">9.807</span><span class="p" data-group-id="2942220925-6">}</span><span class="p" data-group-id="2942220925-2">]</span><span class="p" data-group-id="2942220925-1">)</span><span class="w">
+</span><span class="mi">51898</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="calculate/3">
+
+  <div class="detail-header">
+    <a href="#calculate/3" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">calculate(mass, stage, planet)</h1>
+
+      <a href="https://github.com/NikolaiIvanov/mission-control/blob/main/lib/mission_control.ex#L121" class="view-source" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> calculate(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()) :: Integer.t() | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+<p>MissionControl.calculate/3</p><p>Calculate fuel required to perform single Stage of Mission: Launch or Land</p><h2 id="calculate/3-examples" class="section-heading">
+  <a href="#calculate/3-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">examples</p>
+  </a>
+  Examples
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="w"> </span><span class="nc">MissionControl</span><span class="o">.</span><span class="n">calculate</span><span class="p" data-group-id="6131154514-1">(</span><span class="mi">28801</span><span class="p">,</span><span class="w"> </span><span class="ss">:land</span><span class="p">,</span><span class="w"> </span><span class="mf">9.807</span><span class="p" data-group-id="6131154514-1">)</span><span class="w">
+</span><span class="mi">13447</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="w"> </span><span class="nc">MissionControl</span><span class="o">.</span><span class="n">calculate</span><span class="p" data-group-id="6131154514-2">(</span><span class="mi">28801</span><span class="p">,</span><span class="w"> </span><span class="ss">:land</span><span class="p">,</span><span class="w"> </span><span class="ss">:earth</span><span class="p" data-group-id="6131154514-2">)</span><span class="w">
+</span><span class="mi">13447</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="help/0">
+
+  <div class="detail-header">
+    <a href="#help/0" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">help()</h1>
+
+      <a href="https://github.com/NikolaiIvanov/mission-control/blob/main/lib/mission_control.ex#L55" class="view-source" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> help() :: %{
+  examples: [{:mission, &lt;&lt;_::808&gt;&gt;} | {:mission_stage, &lt;&lt;_::760&gt;&gt;}, ...],
+  methods: [{:mission, &lt;&lt;_::368&gt;&gt;} | {:mission_stage, &lt;&lt;_::416&gt;&gt;}, ...],
+  requirenments: [
+    {:mission_stages, [...]} | {:planets_available, [...]} | {:weight, [...]},
+    ...
+  ]
+}</pre>
+
+      </div>
+
+<p>MissionControl.help()</p><p>Returns help for the module.</p><h2 id="help/0-examples" class="section-heading">
+  <a href="#help/0-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">examples</p>
+  </a>
+  Examples
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">MissionControl</span><span class="o">.</span><span class="n">help</span><span class="p" data-group-id="5012647198-1">(</span><span class="p" data-group-id="5012647198-1">)</span><span class="w">
+</span><span class="p" data-group-id="5012647198-2">%{</span><span class="w">
+  </span><span class="ss">methods</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5012647198-3">[</span><span class="w">
+    </span><span class="ss">mission</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;MissionControl.calculate(integer, list(tuple))&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">mission_stage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;MissionControl.calculate(integer(), atom(), float())&quot;</span><span class="w">
+  </span><span class="p" data-group-id="5012647198-3">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">requirenments</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5012647198-4">[</span><span class="w">
+    </span><span class="ss">weight</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5012647198-5">[</span><span class="w">
+      </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Integer. Example: 28801&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">limitations</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Greather than 0&quot;</span><span class="w">
+    </span><span class="p" data-group-id="5012647198-5">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">mission_stages</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5012647198-6">[</span><span class="w">
+      </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Keyword List[Atom, Float | Atom], Example: [{:launch, 9.807}, {:land, 1.62}]&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="5012647198-6">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">planets_available</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5012647198-7">[</span><span class="w">
+      </span><span class="ss">earth</span><span class="p">:</span><span class="w"> </span><span class="mf">9.807</span><span class="p">,</span><span class="w">
+      </span><span class="ss">moon</span><span class="p">:</span><span class="w"> </span><span class="mf">1.62</span><span class="p">,</span><span class="w">
+      </span><span class="ss">mars</span><span class="p">:</span><span class="w"> </span><span class="mf">3.711</span><span class="w">
+    </span><span class="p" data-group-id="5012647198-7">]</span><span class="w">
+  </span><span class="p" data-group-id="5012647198-4">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">examples</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5012647198-8">[</span><span class="w">
+    </span><span class="ss">mission</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;MissionControl.calculate(28801, [{:launch, 9.807}, {:land, 1.62}, {:launch, :moon}, {:land, :earth}])&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">mission_stage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;MissionControl.calculate(28801, :land, 9.807) or MissionControl.calculate(28801, :land, :earth)&quot;</span><span class="w">
+  </span><span class="p" data-group-id="5012647198-8">]</span><span class="w">
+</span><span class="p" data-group-id="5012647198-2">}</span></code></pre>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+      <footer class="footer">
+
+        <p>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.28.4) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>
